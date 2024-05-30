@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (exitstingStudent && exitstingStudent.MaSV === newStudent.MaSV) {
                         alert('Mã sinh viên đã tồn tại. Vui lòng chọn mã sinh viên khác.');
                     } else {
-                        fetch('http://localhost/mvc-test/api/student/create.php', {
+                        fetch('http://localhost/KTX-API/API_RESTFUL_MVC-main/api/student/create.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
