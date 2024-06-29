@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .then(response => response.json())
                     .then(data => {
                         if (data.message === 'Duplicate data') {
-                            alert('Tài khoản hoặc mật khẩu đã bị trùng!');
+                            alert('Tài khoản đã bị trùng!');
                         } else {
                             console.log(data);
                             fetchAccounts();
