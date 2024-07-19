@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 18, 2024 lúc 11:06 PM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Jul 19, 2024 at 06:53 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `kytucxa`
+-- Database: `api_resful_kytucxa`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `accounts`
+-- Table structure for table `accounts`
 --
 
 CREATE TABLE `accounts` (
@@ -35,20 +35,22 @@ CREATE TABLE `accounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `accounts`
+-- Dumping data for table `accounts`
 --
 
 INSERT INTO `accounts` (`id_account`, `user_account`, `pass_account`, `type_account`) VALUES
-(1, 'nguyenvana', 'password123', 'student'),
+(1, 'nguyenvana', '1231', 'student'),
 (2, 'tranthib', 'password456', 'student'),
-(3, 'phamdinhc', 'password789', 'student'),
+(3, 'phamdinhc', '', 'student'),
 (4, 'hoangthid', 'password101112', 'student'),
-(5, 'levane', 'password131415', 'student');
+(6, 'nhuquynh', '1', 'student'),
+(8, '', '', ''),
+(9, 'nguyenvananh', '1', 'admin');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hoadon`
+-- Table structure for table `hoadon`
 --
 
 CREATE TABLE `hoadon` (
@@ -62,7 +64,7 @@ CREATE TABLE `hoadon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `hoadon`
+-- Dumping data for table `hoadon`
 --
 
 INSERT INTO `hoadon` (`MaHD`, `MaPhong`, `Thang`, `TienDien`, `TienNuoc`, `TienMang`, `TinhTrang`) VALUES
@@ -70,12 +72,13 @@ INSERT INTO `hoadon` (`MaHD`, `MaPhong`, `Thang`, `TienDien`, `TienNuoc`, `TienM
 (2, '101', 2, 210000.00, 155000.00, 52000.00, 'Chưa thanh toán'),
 (3, '102', 1, 220000.00, 160000.00, 53000.00, 'Chưa thanh toán'),
 (4, '102', 2, 230000.00, 165000.00, 54000.00, 'Đã thanh toán'),
-(5, '201', 1, 240000.00, 170000.00, 55000.00, 'Đã thanh toán');
+(5, '201', 1, 240000.00, 170000.00, 55000.00, 'Đã thanh toán'),
+(6, '101', 3, 1.00, 1.00, 1.00, 'Chưa thu');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khu`
+-- Table structure for table `khu`
 --
 
 CREATE TABLE `khu` (
@@ -85,7 +88,7 @@ CREATE TABLE `khu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `khu`
+-- Dumping data for table `khu`
 --
 
 INSERT INTO `khu` (`MaKhu`, `TenKhu`, `GioiTinh`) VALUES
@@ -95,7 +98,7 @@ INSERT INTO `khu` (`MaKhu`, `TenKhu`, `GioiTinh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phong`
+-- Table structure for table `phong`
 --
 
 CREATE TABLE `phong` (
@@ -107,11 +110,11 @@ CREATE TABLE `phong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `phong`
+-- Dumping data for table `phong`
 --
 
 INSERT INTO `phong` (`MaPhong`, `MaKhu`, `SoNguoiToiDa`, `SoNguoiHienTai`, `Gia`) VALUES
-('101', 'A', 2, 1, 1500000),
+('101', 'A', 10, 1, 1500000),
 ('102', 'A', 3, 2, 1800000),
 ('201', 'B', 2, 1, 1600000),
 ('202', 'B', 4, 3, 1900000);
@@ -119,7 +122,7 @@ INSERT INTO `phong` (`MaPhong`, `MaKhu`, `SoNguoiToiDa`, `SoNguoiHienTai`, `Gia`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sinhvien`
+-- Table structure for table `sinhvien`
 --
 
 CREATE TABLE `sinhvien` (
@@ -136,51 +139,53 @@ CREATE TABLE `sinhvien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `sinhvien`
+-- Dumping data for table `sinhvien`
 --
 
 INSERT INTO `sinhvien` (`MaSV`, `HoTen`, `NgaySinh`, `GioiTinh`, `DiaChi`, `SDT`, `Mail`, `MaPhong`, `TenKhu`, `user_account`) VALUES
-('1', '1', '2024-04-04', 'Nữ', '1', '11', '132@gmail.com', '101', 'Khu B', 'tranthib'),
-('4', '4', '2024-04-17', 'Nữ', '6', '655', '6@gmail.com', '201', 'Khu A', 'hoangthid'),
+('1111', '111', '2024-05-17', 'Nam', '11w', '1221334', 'sfd@gmail.com', '101', 'Khu A', 'tranthib'),
+('3', '3', '2024-05-21', 'Nam', '3', '3', '3@gmail.com', '101', 'Khu A', 'hoangthid'),
 ('Má', '2', '2024-04-06', 'Nữ', '23a@gmail.com', '25', '2@mail.com', '201', 'Khu A', 'hoangthid'),
 ('SV1', 'Nguyễn Văn A', '2024-04-15', 'Nam', '123 Đường ABC', '0123456789', 'nguyenvana@exaple.co', '101', 'Khu A', 'nguyenvana'),
 ('SV11', 'ánh', '2024-04-15', 'Nữ', '111q@gmail.com', 'e', '32424', '101', 'Khu B', 'hoangthid'),
-('SV2', 'Trần Thị B', '2024-04-16', 'Nam', '456 Đường XYZ', '242148888888888', 'tranthib@gmail.com', '102', 'Khu A', 'tranthib'),
+('SV14', 'Nguyễn Văn A', '2024-04-15', 'Nam', '123 Đường ABC', '01234567239', 'nguyenvana@exaple.co', '101', 'Khu A', 'phamdinhc'),
+('SV2', 'Trần Thị Bc', '2024-04-16', 'Nam', '456 Đường XYZ', '242148888888888', 'tranthib@gmail.com', '102', 'Khu A', 'tranthib'),
 ('SV3', 'Phạm Đình C', '2024-04-23', 'Nam', '789 Đường DEF', '0369852147', 'phamdinhc@example.co', '201', 'Khu B', 'phamdinhc'),
 ('SV4', 'Hoàng Thị D', '2024-04-22', 'Nữ', '321 Đường HIJ', '0963258741', 'hoangthid@example.com', '202', 'Khu B', 'hoangthid');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `accounts`
+-- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id_account`),
   ADD UNIQUE KEY `user_account` (`user_account`);
 
 --
--- Chỉ mục cho bảng `hoadon`
+-- Indexes for table `hoadon`
 --
 ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`MaHD`),
   ADD KEY `MaPhong` (`MaPhong`);
 
 --
--- Chỉ mục cho bảng `khu`
+-- Indexes for table `khu`
 --
 ALTER TABLE `khu`
   ADD PRIMARY KEY (`MaKhu`);
 
 --
--- Chỉ mục cho bảng `phong`
+-- Indexes for table `phong`
 --
 ALTER TABLE `phong`
-  ADD PRIMARY KEY (`MaPhong`);
+  ADD PRIMARY KEY (`MaPhong`),
+  ADD KEY `phong_ibfk_1` (`MaKhu`);
 
 --
--- Chỉ mục cho bảng `sinhvien`
+-- Indexes for table `sinhvien`
 --
 ALTER TABLE `sinhvien`
   ADD PRIMARY KEY (`MaSV`),
@@ -188,39 +193,39 @@ ALTER TABLE `sinhvien`
   ADD KEY `MaPhong` (`MaPhong`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `accounts`
+-- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id_account` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_account` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `hoadon`
+-- AUTO_INCREMENT for table `hoadon`
 --
 ALTER TABLE `hoadon`
-  MODIFY `MaHD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `MaHD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `hoadon`
+-- Constraints for table `hoadon`
 --
 ALTER TABLE `hoadon`
   ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`MaPhong`) REFERENCES `phong` (`MaPhong`);
 
 --
--- Các ràng buộc cho bảng `phong`
+-- Constraints for table `phong`
 --
 ALTER TABLE `phong`
   ADD CONSTRAINT `phong_ibfk_1` FOREIGN KEY (`MaKhu`) REFERENCES `khu` (`MaKhu`);
 
 --
--- Các ràng buộc cho bảng `sinhvien`
+-- Constraints for table `sinhvien`
 --
 ALTER TABLE `sinhvien`
   ADD CONSTRAINT `sinhvien_ibfk_1` FOREIGN KEY (`user_account`) REFERENCES `accounts` (`user_account`),
